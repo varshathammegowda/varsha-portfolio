@@ -29,25 +29,25 @@ const profile = {
 
 const projects = [
   {
-    number: '01', name: 'Student Feedback NLP System', type: 'NATURAL LANGUAGE PROCESSING', visual: 'feedback',
-    description: 'Turns open-ended student feedback into organized, useful insight. Classifies sentiment and groups comments into areas like faculty, laboratories, examinations, library, and course content.',
-    details: 'Feedback analysis · Topic categorization · Summarization',
-    technologies: ['Python', 'NLP', 'TF-IDF', 'Logistic Regression', 'scikit-learn', 'Pandas'],
+    number: '01', name: 'Jagriti Alarm', type: 'ACTIVITY-BASED ALARM', visual: 'jagriti',
+    description: 'An interactive activity-based alarm application that uses real-time body pose detection to verify physical movements and help users complete activities before dismissing the alarm.',
+    features: ['Real-time pose detection', 'Activity/exercise tracking', 'Camera-based movement verification', 'Repetition counting', 'Interactive alarm experience'],
+    technologies: ['React', 'JavaScript', 'MediaPipe Pose Landmarker', 'Node.js', 'Express.js', 'MongoDB'],
+  link: 'https://github.com/varshathammegowda/Jagriti-Alaram-App'
+},
+  {
+    number: '02', name: 'Student Feedback NLP System', type: 'NATURAL LANGUAGE PROCESSING', visual: 'feedback',
+    description: 'A natural language processing system that analyzes student feedback, classifies sentiment, and organizes comments into meaningful categories to generate useful insights.',
+    features: ['Sentiment classification', 'Feedback categorization', 'Text preprocessing', 'TF-IDF feature extraction', 'Logistic Regression classification', 'Feedback insights'],
+    technologies: ['Python', 'NLP', 'TF-IDF', 'Logistic Regression', 'Scikit-learn', 'Pandas'],
     link: 'https://github.com/varshathammegowda/student-feedback-nlp',
   },
   {
-    number: '02', name: 'AI-Powered Research Agent', type: 'RETRIEVAL-AUGMENTED GENERATION', visual: 'research',
-    description: 'A research assistant for exploring academic papers, retrieving relevant information, and producing structured answers grounded in source material.',
-    details: 'Academic discovery · Semantic search · PDF question answering',
+    number: '03', name: 'AI-Powered Research Agent', type: 'RETRIEVAL-AUGMENTED GENERATION', visual: 'research',
+    description: 'An AI research assistant that discovers academic papers, extracts information from PDFs, performs semantic search, and generates context-aware answers using retrieved research content.',
+    features: ['Academic paper discovery', 'PDF text extraction', 'Semantic search', 'RAG pipeline', 'Context-aware question answering', 'AI-generated responses'],
     technologies: ['React', 'FastAPI', 'Python', 'OpenAlex', 'PyMuPDF', 'Sentence Transformers', 'ChromaDB', 'Gemini API'],
     link: 'https://github.com/varshathammegowda/Research-agent',
-  },
-  {
-    number: '03', name: 'ForgeMind AI', type: 'INDUSTRIAL KNOWLEDGE INTELLIGENCE', visual: 'forge',
-    description: 'An AI-powered knowledge platform for industrial documents. It processes technical files, makes their content searchable, and generates context-aware answers from retrieved information.',
-    details: 'Document processing · Semantic retrieval · Context-aware Q&A',
-    technologies: ['React', 'FastAPI', 'Python', 'ChromaDB', 'RAG', 'Embeddings'],
-    link: 'https://github.com/soundaryadshetty14-hash/ForgeMind-AI',
   },
 ];
 
@@ -225,9 +225,27 @@ function FallbackTechIcon({ mark }) {
 }
 
 function ProjectVisual({ type }) {
-  if (type === 'feedback') return <div className="project-visual visual-feedback"><div className="visual-window"><div className="window-bar"><i /><i /><i /><span>feedback_insights.py</span></div><div className="sentiment-row"><span>POSITIVE</span><b style={{ width: '78%' }} /></div><div className="sentiment-row"><span>NEUTRAL</span><b style={{ width: '48%' }} /></div><div className="sentiment-row"><span>NEGATIVE</span><b style={{ width: '32%' }} /></div><div className="visual-label">SENTIMENT OVERVIEW <em>01—03</em></div></div></div>;
-  if (type === 'research') return <div className="project-visual visual-research"><div className="research-ring ring-a"/><div className="research-ring ring-b"/><div className="research-node node-a">PAPER</div><div className="research-node node-b">QUERY</div><div className="research-node node-c">RAG</div><div className="research-core">⌕</div><span className="visual-label">KNOWLEDGE, CONNECTED</span></div>;
-  return <div className="project-visual visual-forge"><div className="forge-doc"><span>PDF / 24 PAGES</span><i /><i /><i /><i /><i /><b>EXTRACTED KNOWLEDGE</b></div><div className="forge-arrow">↗</div><div className="forge-answer"><span>AI RESPONSE</span><p>Context, retrieved.<br /><b>Answers that make sense.</b></p><i>RAG / 01</i></div><span className="visual-label">FROM DOCUMENT TO DECISION</span></div>;
+  if (type === 'jagriti') return <div className="project-visual visual-jagriti" aria-hidden="true">
+    <div className="activity-ui">
+      <div className="activity-ui-top"><span><i /> LIVE POSE CHECK</span><span>CAMERA / 01</span></div>
+      <div className="activity-frame">
+        <span className="activity-corner corner-tl" /><span className="activity-corner corner-tr" />
+        <span className="activity-corner corner-bl" /><span className="activity-corner corner-br" />
+        <svg className="pose-figure" viewBox="0 0 180 150" fill="none">
+          <circle cx="91" cy="27" r="10" />
+          <path d="M91 39 88 79 91 101M89 53 64 70 49 58M89 54 114 68 130 54M88 79 68 111 61 134M89 80 111 109 121 132" />
+          <circle cx="88" cy="51" r="3" /><circle cx="64" cy="70" r="3" /><circle cx="114" cy="68" r="3" />
+          <circle cx="88" cy="79" r="3" /><circle cx="68" cy="111" r="3" /><circle cx="111" cy="109" r="3" />
+        </svg>
+        <span className="activity-guide guide-one" /><span className="activity-guide guide-two" />
+      </div>
+      <div className="activity-ui-bottom"><span><i /> MOVEMENT DETECTED</span><span>ACTIVITY 01</span></div>
+    </div>
+    <span className="visual-label">MOVE TO DISMISS <em>· LIVE</em></span>
+  </div>;
+  if (type === 'feedback') return <div className="project-visual visual-feedback" aria-hidden="true"><div className="visual-window"><div className="window-bar"><i /><i /><i /><span>feedback_insights.py</span></div><div className="sentiment-row"><span>POSITIVE</span><b style={{ width: '78%' }} /></div><div className="sentiment-row"><span>NEUTRAL</span><b style={{ width: '48%' }} /></div><div className="sentiment-row"><span>NEGATIVE</span><b style={{ width: '32%' }} /></div><div className="visual-label">SENTIMENT OVERVIEW <em>01—03</em></div></div></div>;
+  if (type === 'research') return <div className="project-visual visual-research" aria-hidden="true"><div className="research-ring ring-a"/><div className="research-ring ring-b"/><div className="research-node node-a">PAPER</div><div className="research-node node-b">QUERY</div><div className="research-node node-c">RAG</div><div className="research-core">⌕</div><span className="visual-label">KNOWLEDGE, CONNECTED</span></div>;
+  return null;
 }
 
 function Projects() {
@@ -235,7 +253,19 @@ function Projects() {
     <SectionHeading number="03" eyebrow="SELECTED WORK" title="Ideas made" accent="tangible." />
     <div className="project-list">{projects.map((project, index) => <article className="project-card" key={project.number} style={{ '--reveal-delay': `${index * 110}ms` }}>
       <ProjectVisual type={project.visual} />
-      <div className="project-info"><div className="project-topline"><span>PROJECT {project.number}</span><span>{project.type}</span></div><h3>{project.name}</h3><p className="project-description">{project.description}</p><p className="project-details">{project.details}</p><div className="project-tags">{project.technologies.map((tech) => <span key={tech}>{tech}</span>)}</div><a className="project-link" href={project.link} target="_blank" rel="noreferrer">View on GitHub <span>↗</span></a></div>
+      <div className="project-info">
+        <div className="project-topline"><span>PROJECT {project.number}</span><span>{project.type}</span></div>
+        <h3>{project.name}</h3>
+        <p className="project-description">{project.description}</p>
+        <div className="project-capabilities">
+          <p className="project-subheading">KEY CAPABILITIES</p>
+          <ul className="project-features" aria-label={`${project.name} key features`}>
+            {project.features.map((feature) => <li key={feature}>{feature}</li>)}
+          </ul>
+        </div>
+        <div className="project-tags" aria-label="Technologies used">{project.technologies.map((tech) => <span key={tech}>{tech}</span>)}</div>
+        {project.link && <a className="project-link" href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.name} on GitHub`}>View on GitHub <span>↗</span></a>}
+      </div>
     </article>)}</div>
   </section>;
 }
